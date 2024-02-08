@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:Luciano 
+apellido:López
 ---
 TP: ES_Facturaciones
 ---
@@ -41,7 +41,7 @@ class App(customtkinter.CTk):
         
         self.txt_importe_3 = customtkinter.CTkEntry(master=self)
         self.txt_importe_3.grid(row=2, column=1)
-       
+    
         self.btn_total = customtkinter.CTkButton(master=self, text="TOTAL", command=self.btn_total_on_click)
         self.btn_total.grid(row=3, pady=10, columnspan=2, sticky="nsew")
         
@@ -52,13 +52,45 @@ class App(customtkinter.CTk):
         self.btn_total_iva.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def btn_total_on_click(self):
-        pass
+        importe1 = self.txt_importe_1.get()
+        importe2 = self.txt_importe_2.get()
+        importe3 = self.txt_importe_3.get()
+
+        importe1Num = float(importe1)
+        importe2Num = float(importe2)
+        importe3Num = float(importe3)
+
+        resultado = importe1Num + importe2Num + importe3Num
+
+        alert("Facturacion",resultado)
 
     def btn_promedio_on_click(self):
-        pass
+        importe1 = self.txt_importe_1.get()
+        importe2 = self.txt_importe_2.get()
+        importe3 = self.txt_importe_3.get()
+
+        importe1Num = float(importe1)
+        importe2Num = float(importe2)
+        importe3Num = float(importe3)
+
+        resultado = (importe1Num + importe2Num + importe3Num) / 3
+
+        alert("Facturacion",resultado)
+
 
     def btn_total_iva_on_click(self):
-        pass      
+        importe1 = self.txt_importe_1.get()
+        importe2 = self.txt_importe_2.get()
+        importe3 = self.txt_importe_3.get()
+
+        importe1Num = float(importe1)
+        importe2Num = float(importe2)
+        importe3Num = float(importe3)
+
+        resultado = (importe1Num + importe2Num + importe3Num) * 0.21
+        resultado2 = importe1Num + importe2Num + importe3Num + resultado
+
+        alert("Facturacion",resultado2)
     
 if __name__ == "__main__":
     app = App()
