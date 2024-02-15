@@ -57,8 +57,76 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        estaciones = self.combobox_estaciones.get()
+        destinos = self.combobox_destino.get()
+        precio = 15000
+
+        match estaciones:
+            case "Invierno":
+
+                match destinos:
+
+                    case "Bariloche":
+                        precio_final = (precio + (precio * 0.20))
+
+                    case "Cordoba" | "Cataratas":
+                        precio_final = (precio - (precio * 0.10))
+
+                    case _: 
+                        precio_final = (precio - (precio * 0.20))
+
+            case "Verano":
+
+                match destinos:
+
+                    case "Bariloche":
+                        precio_final = (precio - (precio * 0.20))
+
+                    case "Cataratas" | "Cordoba":
+                        precio_final = (precio + (precio * 0.10))
+
+                    case "Mar del plata":
+                        precio_final = (precio + (precio * 0.20))
+
+            case "Primavera" | "Otoño":
+
+                match destinos:
+
+                    case "Bariloche" | "Mar del plata" | "Cataratas" :
+                        precio_final = (precio + (precio * 0.10))
+
+                    case _:
+                        precio_final = precio
+
+        alert ("mensaje", precio_final)            
+                
             
+
+
+
+
+
+
+'''
+
+Una agencia de viajes cobra $15.000 por cada estadía como base. 
+Luego para calcular las tarifas total realiza el siguiente cálculo, 
+en función de la estación del año y del destino elegido:
+    Si es invierno: 
+        Bariloche tiene un aumento del 20% 
+        Cataratas y Córdoba tienen un descuento del 10%
+        Mar del plata tiene un descuento del 20%
+    Si es Verano:
+        Bariloche tiene un descuento del 20%
+        Cataratas y Cordoba tienen un aumento del 10%
+        Mar del plata tiene un aumento del 20%
+    Si es Primavera u Otoño:
+        Bariloche tiene un aumento del 10%
+        Cataratas tiene un aumento del 10%
+        Mar del plata tiene un aumento del 10%
+        Córdoba tiene precio sin descuento
+
+'''
     
 if __name__ == "__main__":
     app = App()

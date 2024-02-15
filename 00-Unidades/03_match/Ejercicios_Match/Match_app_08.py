@@ -37,7 +37,7 @@ class App(customtkinter.CTk):
         Destino = self.combobox_destino.get()
 
         match Destino:
-            case "Bariloche"| "Ushuaia":
+            case "Bariloche" | "Ushuaia":
                 mensaje = "Hace frio la mayoria de estaciones del año"
             case "Mar del plata" | "Cataratas":
                 mensaje = "Hace Calor la mayoria de estaciones del año"

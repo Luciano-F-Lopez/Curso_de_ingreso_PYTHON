@@ -43,8 +43,39 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
-        
+        marca = self.combobox_marca.get()
+        cantidad = int(self.combobox_cantidad.get())
+        descuento = 0
+        precio = 800 * cantidad
+
+        if cantidad > 5:
+            precio_final = precio - (precio * 0.50)
+        elif cantidad == 5:
+            if marca == "ArgentinaLuz":
+                precio_final = precio - (precio * 0.40) 
+            else:
+                precio_final = precio - (precio * 0.30) 
+        elif cantidad == 4:
+            if marca == "ArgentinaLuz":
+                precio_final = precio - (precio * 0.25)
+            elif marca == "FelipeLamparas":
+                precio_final = precio - (precio * 0.25)
+            else:
+                precio_final = precio - (precio * 0.20)
+        elif cantidad == 3:
+            if marca  == "ArgentinaLuz":
+                precio_final = precio - (precio * 0.15)
+            elif marca == "FelipeLamparas":
+                precio_final = precio - (precio * 0.10)
+            else:
+                precio_final = precio - (precio * 0.05)
+
+        if precio_final > 4000:
+            precio_final = precio_final - (precio_final * 0.05)
+
+        alert ("mensaje", precio_final)
+
+
     
 if __name__ == "__main__":
     app = App()
